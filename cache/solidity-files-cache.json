@@ -1,441 +1,6 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "C:\\Users\\Jonathan\\Documents\\UCM\\Doctorado\\Investigaciones\\Generator App\\Generator-DApp\\contracts\\Generator.sol": {
-      "lastModificationDate": 1646081975204,
-      "contentHash": "59f8508a87f9abd823ca58cead6b33fe",
-      "sourceName": "contracts/Generator.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Generator"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Documents\\UCM\\Doctorado\\Investigaciones\\Generator App\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFConsumerBase.sol": {
-      "lastModificationDate": 1638185382391,
-      "contentHash": "b2cd4396ec9f9d0b2dd385cc26d54298",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/LinkTokenInterface.sol",
-        "./VRFRequestIDBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFConsumerBase"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Documents\\UCM\\Doctorado\\Investigaciones\\Generator App\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\interfaces\\LinkTokenInterface.sol": {
-      "lastModificationDate": 1638185382485,
-      "contentHash": "6d810dc28dac1e67147711dd3b35aae2",
-      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "LinkTokenInterface"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Documents\\UCM\\Doctorado\\Investigaciones\\Generator App\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFRequestIDBase.sol": {
-      "lastModificationDate": 1638185382392,
-      "contentHash": "cd3cfe02e0dcd3100ba2fef4ee94bb9e",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFRequestIDBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFRequestIDBase"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\my_v9\\Generator-DApp\\contracts\\Generator.sol": {
-      "lastModificationDate": 1649196689472,
-      "contentHash": "2f8149fa0d6d80e34c139210669f0138",
-      "sourceName": "contracts/Generator.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Generator"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\my_v9\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFConsumerBase.sol": {
-      "lastModificationDate": 1648716696187,
-      "contentHash": "b2cd4396ec9f9d0b2dd385cc26d54298",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/LinkTokenInterface.sol",
-        "./VRFRequestIDBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFConsumerBase"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\my_v9\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\interfaces\\LinkTokenInterface.sol": {
-      "lastModificationDate": 1648716708321,
-      "contentHash": "6d810dc28dac1e67147711dd3b35aae2",
-      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "LinkTokenInterface"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\my_v9\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFRequestIDBase.sol": {
-      "lastModificationDate": 1648716696181,
-      "contentHash": "cd3cfe02e0dcd3100ba2fef4ee94bb9e",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFRequestIDBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFRequestIDBase"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\v11\\Generator-DApp\\contracts\\Generator.sol": {
-      "lastModificationDate": 1649534885142,
-      "contentHash": "8a27d0a0557a8283abb5a81b8f70d4b1",
-      "sourceName": "contracts/Generator.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Generator"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\v11\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFConsumerBase.sol": {
-      "lastModificationDate": 1649521359041,
-      "contentHash": "b2cd4396ec9f9d0b2dd385cc26d54298",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "./interfaces/LinkTokenInterface.sol",
-        "./VRFRequestIDBase.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFConsumerBase"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\v11\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\interfaces\\LinkTokenInterface.sol": {
-      "lastModificationDate": 1649521372443,
-      "contentHash": "6d810dc28dac1e67147711dd3b35aae2",
-      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "LinkTokenInterface"
-      ]
-    },
-    "C:\\Users\\Jonathan\\Desktop\\DApp Versiones\\v11\\Generator-DApp\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFRequestIDBase.sol": {
-      "lastModificationDate": 1649521359035,
-      "contentHash": "cd3cfe02e0dcd3100ba2fef4ee94bb9e",
-      "sourceName": "@chainlink/contracts/src/v0.8/VRFRequestIDBase.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "VRFRequestIDBase"
-      ]
-    },
     "C:\\Users\\Jonathan\\3SAT_Instance_Generator\\3SAT_Instance_Generator\\contracts\\Generator.sol": {
       "lastModificationDate": 1650291356514,
       "contentHash": "44c92abd319c5a0f5b9300d1a4a62660",
@@ -548,6 +113,151 @@
     },
     "C:\\Users\\Jonathan\\3SAT_Instance_Generator\\3SAT_Instance_Generator\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFRequestIDBase.sol": {
       "lastModificationDate": 1649521359035,
+      "contentHash": "cd3cfe02e0dcd3100ba2fef4ee94bb9e",
+      "sourceName": "@chainlink/contracts/src/v0.8/VRFRequestIDBase.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "VRFRequestIDBase"
+      ]
+    },
+    "C:\\Users\\Jonathan\\Documents\\GitHub\\Egalitarian_Instance_Generator\\contracts\\Generator.sol": {
+      "lastModificationDate": 1652869809322,
+      "contentHash": "22b415dc3c4ca6a50bf049fa892bbad0",
+      "sourceName": "contracts/Generator.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Generator"
+      ]
+    },
+    "C:\\Users\\Jonathan\\Documents\\GitHub\\Egalitarian_Instance_Generator\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFConsumerBase.sol": {
+      "lastModificationDate": 1652869813806,
+      "contentHash": "b2cd4396ec9f9d0b2dd385cc26d54298",
+      "sourceName": "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./interfaces/LinkTokenInterface.sol",
+        "./VRFRequestIDBase.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "VRFConsumerBase"
+      ]
+    },
+    "C:\\Users\\Jonathan\\Documents\\GitHub\\Egalitarian_Instance_Generator\\node_modules\\@chainlink\\contracts\\src\\v0.8\\interfaces\\LinkTokenInterface.sol": {
+      "lastModificationDate": 1652869813819,
+      "contentHash": "6d810dc28dac1e67147711dd3b35aae2",
+      "sourceName": "@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "LinkTokenInterface"
+      ]
+    },
+    "C:\\Users\\Jonathan\\Documents\\GitHub\\Egalitarian_Instance_Generator\\node_modules\\@chainlink\\contracts\\src\\v0.8\\VRFRequestIDBase.sol": {
+      "lastModificationDate": 1652869813807,
       "contentHash": "cd3cfe02e0dcd3100ba2fef4ee94bb9e",
       "sourceName": "@chainlink/contracts/src/v0.8/VRFRequestIDBase.sol",
       "solcConfig": {
