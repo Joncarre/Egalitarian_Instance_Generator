@@ -27,7 +27,7 @@ const HeroSection = () => {
             </HeroBg>
             <HeroContent>
                 <HeroH1>
-                    3-SAT Instance Generator
+                    Egalitarian Instance Generator
                 </HeroH1>
                 <HeroP>
                     Sign up and generate problem instances for algorithm testing
