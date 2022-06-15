@@ -89,7 +89,7 @@ const Navbar = ({ toggle }) => {
       // then check current path, and activate responding class of NavLinks
       const q1 = document.querySelector("#scrollToDapp");
       const q2 = document.querySelector("#scrollToHowItWorks");
-      const q3 = document.querySelector("#scrollTo3sat");
+      const q3 = document.querySelector("#scrollToAuction");
       const q4 = document.querySelector("#scrollToChainlink");
       q1.classList.remove('active');
       q2.classList.remove('active');
@@ -103,7 +103,7 @@ const Navbar = ({ toggle }) => {
           // console.log(location.pathname);
           q2.classList.add('active');
           break;
-        case "/3sat":
+        case "/auction":
           q3.classList.add('active');
           break;
         case "/chainlink":
@@ -161,15 +161,15 @@ const Navbar = ({ toggle }) => {
               >How it works</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks id="scrollTo3sat"
-                to={url === '/' ? '3sat' : 'navbar'}
+              <NavLinks id="scrollToAuction"
+                to={url === '/' ? 'auction' : 'navbar'}
                 smooth={true}
                 duration={500}
                 spy={url === '/' ? true : false}
                 exact='true'
                 offset={-80}
-                onClick={() => handleClick('/3sat')}
-              >3-SAT</NavLinks>
+                onClick={() => handleClick('/auction')}
+              >Auction</NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks id="scrollToChainlink"

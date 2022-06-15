@@ -147,8 +147,8 @@
       ]
     },
     "C:\\Users\\Jonathan\\Documents\\GitHub\\Egalitarian_Instance_Generator\\contracts\\Generator.sol": {
-      "lastModificationDate": 1652869809322,
-      "contentHash": "22b415dc3c4ca6a50bf049fa892bbad0",
+      "lastModificationDate": 1654245161677,
+      "contentHash": "a2f4e09724884107ea737eb3f0efa02d",
       "sourceName": "contracts/Generator.sol",
       "solcConfig": {
         "version": "0.8.0",

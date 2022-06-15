@@ -92,8 +92,8 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to='how_it_works' onClick={() => handleClick('/howitworks')}>
             How it works
           </SidebarLink>
-          <SidebarLink to='3sat' onClick={() => handleClick('/3sat')}>
-            3-SAT
+          <SidebarLink to='auction' onClick={() => handleClick('/auction')}>
+            Auction
           </SidebarLink>
           <SidebarLink to='chainlink' onClick={() => handleClick('/chainlink')}>
             Chainlink

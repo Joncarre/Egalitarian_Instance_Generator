@@ -11,11 +11,6 @@ export const Container = styled.div`
     z-index: 0;
     overflow: hidden;
     background: #fff;
-    // background: linear-gradient(
-    //     108deg,
-    //     rgba(11, 83, 69 ) 0%,
-    //     rgba(23, 165, 137) 100%
-    // );
 `;
 
 export const Wrap = styled.div`
@@ -72,7 +67,7 @@ export const NewLink = styled.a`
     color: #000;
     // text-decoration: none;
     &:hover {
-        color: #01bf71;
+        color: #1E90FF;
     }
 `;
 
@@ -80,7 +75,7 @@ export const NewLinkWithoutline = styled.a`
     color: #000;
     text-decoration: none;
     &:hover {
-        color: #01bf71;
+        color: #1E90FF;
     }
 `;
 

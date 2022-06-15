@@ -50,7 +50,7 @@ const InfoSection = ({ lightBg, id, imgStart, img, topLine, lightText, headline,
 								{(id === "chainlink" || id === "how_it_works") &&
 									<ImgChainlink src={img} alt={alt}></ImgChainlink>
 								}
-								{(id === "dapp" || id === "3sat") &&
+								{(id === "dapp" || id === "auction") &&
 									<Img src={img} alt={alt}></Img>
 								}
 							</ImgWrap>

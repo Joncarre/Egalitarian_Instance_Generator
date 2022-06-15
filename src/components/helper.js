@@ -38,7 +38,7 @@ export const checkPasswordMatchOrcid = (orcid) => {
 }
 
 /*
-* Function to obtain the first 10 number elements from the hash generated baed on the orcid
+* Function to obtain the first 10 number elements from the hash generated based on the orcid
 */
 const cutHash = (elem) => {
 	var cut = elem.replace(/[^0-9]/g, '');

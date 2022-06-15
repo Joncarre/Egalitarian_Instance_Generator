@@ -10,7 +10,7 @@ const Faqs = () => {
         <Container>
             <Wrap>
                 <NewH1>What is the usefulness of this website?</NewH1>
-                <NewP>It allows to generate instances of the problem known as 3-SAT. These instances are generated using verifiable random numbers and are especially useful for testing algorithms. Thus, a researcher wishing to test an algorithm that finds solutions to the 3-SAT problem could use our application to generate instances and, in this way, test his algorithm/programme.</NewP>
+                <NewP>It allows generating instances of resource auctions under the Egalitarian model. These instances are generated using verifiable random numbers and are especially useful for testing algorithms. Thus, a researcher wishing to test an algorithm that finds optimal solutions for this type of allocations could use our application to generate instances and thus test his algorithm/program.</NewP>
                 <NewP>Usually, test generators present some problems such as trusting third parties and ensuring that the generated instances are completely random. By making use of the inherent features of the blockchain, we are able to remove the trust in that third party (which is no longer necessary) and guarantee that the instances are indeed random, thanks to Chainlink oracles.</NewP>       
     
                 <NewH1>What is the difference between a Centralized and Decentralized App?</NewH1>

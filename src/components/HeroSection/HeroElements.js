@@ -105,7 +105,8 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 
 export const BtnLinkHome = styled(LinkR)`
     border-radius: 6px;
-    background: #01bf71;
+    background: #1E90FF;
+
     white-space: nowrap;
     padding: 10px 22px;
     color: #010101;
@@ -119,13 +120,13 @@ export const BtnLinkHome = styled(LinkR)`
     &:hover {
         transition: all 0.4s ease-in-out;
         background: transparent;
-        color: #01bf71;
-        border: 1px solid #01bf71;
+        color: #1E90FF;
+        border: 1px solid #1E90FF;
     }
 `;
 
 export const BtnLinkSing = styled(LinkR)`
-    color: #01bf71;
+    color: #1E90FF;
     text-decoration: none;
     padding: 15px 15px 2px 15px;
     font-size: 14px;
@@ -133,7 +134,7 @@ export const BtnLinkSing = styled(LinkR)`
 
     &:hover {
         transition: all 0.6s ease-in-out;
-        border-bottom: solid 2px #01bf71;
+        border-bottom: solid 2px #1E90FF;
     }
 `;
 

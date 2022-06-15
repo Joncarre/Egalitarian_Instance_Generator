@@ -51,7 +51,7 @@ export default function UnstyledTable({ data, headerItems }) {
 
   const handleResolve = (data, item) => {
     if (item.name === 'chain') {
-      return <td><ButtonJson onClick={() => handleClickJson(data['chain'], data['id'])}>JSON</ButtonJson></td>;
+      return <td><ButtonJson onClick={() => handleClickJson(data['chain'], data['id'], data['id'])}>JSON</ButtonJson></td>;
     }
     else if (item.name === 'solved') {
       return data[item.name] ? <td>True</td> : <td>False</td>;

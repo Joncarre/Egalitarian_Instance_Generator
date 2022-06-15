@@ -66,6 +66,8 @@ const UserSection = () => {
       async_createAInstance(data);
     else if (event.nativeEvent.submitter?.id === "submit2")
       async_createBInstance(data);
+    else if (event.nativeEvent.submitter?.id === "submit3")
+      async_createCInstance(data);
   }
 
   /*
@@ -78,10 +80,11 @@ const UserSection = () => {
       const signer = provider.getSigner()
       const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
       const transaction = await contract.createAInstance(
-        data.p_value,
-        data.q_value,
+        data.agents,
+        data.resources,
         secureStorage.getItem('password'),
         data.numInstances,
+        1,
         { gasLimit: 30000000 })
       await transaction.wait()
     }
@@ -97,10 +100,31 @@ const UserSection = () => {
       const signer = provider.getSigner()
       const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
       const transaction = await contract.createBInstance(
-        data.p_value,
-        data.q_value,
+        data.agents,
+        data.resources,
         secureStorage.getItem('password'),
         data.numInstances,
+        1,
+        { gasLimit: 30000000 })
+      await transaction.wait()
+    }
+  }
+
+  /*
+  * This function executes the function to generate a new instance using C generator
+  */
+  async function async_createCInstance(data) {
+    if (typeof window.ethereum !== 'undefined') {
+      await requestAccount()
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner()
+      const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
+      const transaction = await contract.createCInstance(
+        data.agents,
+        data.resources,
+        secureStorage.getItem('password'),
+        data.numInstances,
+        1,
         { gasLimit: 30000000 })
       await transaction.wait()
     }
@@ -118,6 +142,7 @@ const UserSection = () => {
         const signer = provider.getSigner();
         const result = await contract.connect(signer).getAllInstances(data.orcid);
         infoArray = buildInstance(result);
+        console.log(infoArray);
         secureStorage.setItem("currOrcid", data.orcid)
         history.push({
           pathname: '/instances',
@@ -221,32 +246,32 @@ const UserSection = () => {
           <img className="logo" src={logo} alt='logo' onClick={() => { async_getRandomNumber(); async_getRemainingLINK(); async_randomResult(); }} />
           <span className="field-tip">
             <FormLabel>First parameter</FormLabel>
-            <span className="tip-content">The "p" value indicates the probability of generating a new proposition symbol</span>
+            <span className="tip-content">This parameter indicates how many agents will participate in the auction. Leave it at 0 to make it random.</span>
           </span>
-          <FormInput {...register("p_value", {
+          <FormInput {...register("agents", {
             required: true,
-            max: 99,
-            min: 1,
+            max: 8,
+            min: 0,
             pattern: /^[0-9\b]+$/
-          })} type="number" name="p_value" placeholder="p value" />
-          {errors?.p_value?.type === "required" && <FormError>Field required</FormError>}
-          {errors?.p_value?.type === "max" && <FormError>Integer number between [1, 99]</FormError>}
-          {errors?.p_value?.type === "min" && <FormError>Integer number between [1, 99]</FormError>}
-          {errors?.p_value?.type === "pattern" && <FormError>Numerical characters only</FormError>}
+          })} type="number" name="agents" placeholder="agents" />
+          {errors?.agents?.type === "required" && <FormError>Field required</FormError>}
+          {errors?.agents?.type === "max" && <FormError>Integer number between [0, 8]</FormError>}
+          {errors?.agents?.type === "min" && <FormError>Integer number between [0, 8]</FormError>}
+          {errors?.agents?.type === "pattern" && <FormError>Numerical characters only</FormError>}
           <span className="field-tip">
             <FormLabel>Second parameter</FormLabel>
-            <span className="tip-content">The "q" value indicates the probability of generating a new clause</span>
+            <span className="tip-content">It indicates how many resources will be available in the auction. Leave it at 0 to make it random.</span>
           </span>
-          <FormInput {...register("q_value", {
+          <FormInput {...register("resources", {
             required: true,
-            max: 99,
-            min: 1,
+            max: 30,
+            min: 0,
             pattern: /^[0-9\b]+$/
-          })} type="number" name="q_value" placeholder="q value" />
-          {errors?.q_value?.type === "required" && <FormError>Field required</FormError>}
-          {errors?.q_value?.type === "max" && <FormError>Integer number between [1, 99]</FormError>}
-          {errors?.q_value?.type === "min" && <FormError>Integer number between [1, 99]</FormError>}
-          {errors?.q_value?.type === "pattern" && <FormError>Numerical characters only</FormError>}
+          })} type="number" name="resources" placeholder="resources" />
+          {errors?.resources?.type === "required" && <FormError>Field required</FormError>}
+          {errors?.resources?.type === "max" && <FormError>Integer number between [0, 30]</FormError>}
+          {errors?.resources?.type === "min" && <FormError>Integer number between [0, 30]</FormError>}
+          {errors?.resources?.type === "pattern" && <FormError>Numerical characters only</FormError>}
           <span className="field-tip">
             <FormLabel>Number of instances</FormLabel>
             <span className="tip-content">Enter the number of instances you would like to generate</span>
@@ -264,7 +289,8 @@ const UserSection = () => {
           <div>
             { /* FormButtonTop has props(left or right) for controlling the 'float' attr  */}
             <FormButtonTop left id="submit1" type="submit" value="A generator" />
-            <FormButtonTop right id="submit2" type="submit" value="B generator" />
+            <FormButtonTop center id="submit2" type="submit" value="B generator" />
+            <FormButtonTop right id="submit3" type="submit" value="C generator" />
           </div>
         </Form>
       </FormWrap1>

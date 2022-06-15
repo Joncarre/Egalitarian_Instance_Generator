@@ -8,8 +8,8 @@ export const ButtonJson = styled.button`
     border-radius: 5px;
     border-bottom: 2px solid transparent;
     border-top: 2px solid transparent;
-    border-right: 2px solid #117864;
-    border-left: 2px solid #117864;
+    border-right: 2px solid #0F52BA;
+    border-left: 2px solid #0F52BA;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
@@ -17,8 +17,8 @@ export const ButtonJson = styled.button`
 
     &:hover{
         transition: all 0.3s ease-in-out;
-        border: 2px solid #117864;
-        color: #117864;
+        border: 2px solid #0F52BA;
+        color: #0F52BA;
         background: #fff;
     }
     @media screen and (max-width: 600px) {

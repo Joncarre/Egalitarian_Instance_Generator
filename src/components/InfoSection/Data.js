@@ -40,13 +40,13 @@ export const homeObjTwo = {
 };
 
 export const homeObjThree = {
-    id: '3sat',
+    id: 'auction',
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: '3-SAT',
-    headline: 'What is the 3-SAT problem?',
-    description: 'The main objective of this DApp is to generate random instances of the 3-SAT problem. Find out a little more about this problem and why it is so important for computer science.',
+    topLine: 'Auction',
+    headline: 'What is the Egalitarian auction problem?',
+    description: 'The main objective of this DApp is to generate random instances of ...',
     buttonLabel: 'Learn More',
     imgStart: true,
     img: threeSatImg,
@@ -54,7 +54,7 @@ export const homeObjThree = {
     dark: true,
     primary: true,
     darkText: false,
-    url: '/3sat'
+    url: '/auction'
 };
 
 export const homeObjFour = {

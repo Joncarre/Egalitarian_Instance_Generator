@@ -3,6 +3,10 @@ pragma solidity ^0.8.0;
 pragma experimental ABIEncoderV2;
 import "@chainlink/contracts/src/v0.8/VRFConsumerBase.sol";
 
+// Notas
+    // 2. Una solucion es simplemente un reparto. Solo ciframos la solucion. Los hashes del algoritmo usado se quedan igual
+    // 6. Si mode = false (0) estamos en unlimited. Si mode = true (1) estamos en limited
+
 /// @title 
 /// @author J. Carrero
 contract Generator is VRFConsumerBase {
@@ -26,14 +30,16 @@ contract Generator is VRFConsumerBase {
     struct Instance {
         uint256 id;
         string chain;
-        uint256 size;
+        uint256[] setup;
         uint256 dateCreated;
         string solution;
         bool solved;
         uint256 dateSolution;
     }
-    mapping(uint256 => Instance) instances; // id => instance
+    mapping(uint256 => Instance) instancesAuction; // id => instanceAuction (even)
+    mapping(uint256 => Instance) instancesOptimization; // id => instanceOptimization (odd)
 
+    // Information about the solution hashed
     struct Hash {
         string solution_hash;
         string algorithm_hash;
@@ -50,8 +56,7 @@ contract Generator is VRFConsumerBase {
     uint256 nonce;
     uint256 idInstance;
     
-    // MAX-3SAT variables
-    uint256 clausesLength;
+    // Egalitarian variables
     uint256 maxRandonNumbers;
     
     /// @notice Main constructor
@@ -65,7 +70,6 @@ contract Generator is VRFConsumerBase {
         fee = 0.1 * 10 ** 18; // 0.1 LINK (it varies by network)
         nonce = 0;
         idInstance = 0;
-        clausesLength = 3;
         maxRandonNumbers = 2100; // Around 400 for B generated so: 400*5 = 2000
     }
     
@@ -96,11 +100,14 @@ contract Generator is VRFConsumerBase {
 
     // ---------------------------------- Instance functions ----------------------------------
 
-    /// @notice Get instance
+    /// @notice Get instance. If _id is even we have to check in instancesAuction, otherwise we check in instancesOptimization
     /// @param _id instance
     /// @return instance itself
-    function getInstance(uint256 _id) public view returns (uint256, string memory, uint256, uint256, string memory, bool, uint256){
-        return (instances[_id].id, instances[_id].chain, instances[_id].size, instances[_id].dateCreated, instances[_id].solution, instances[_id].solved, instances[_id].dateSolution);
+    function getInstance(uint256 _id) public view returns (uint256, string memory, uint256[] memory, uint256, string memory, bool, uint256){
+        if(_id % 2 == 0)
+            return (instancesAuction[_id].id, instancesAuction[_id].chain, instancesAuction[_id].setup, instancesAuction[_id].dateCreated, instancesAuction[_id].solution, instancesAuction[_id].solved, instancesAuction[_id].dateSolution);
+        else
+            return (instancesOptimization[_id].id, instancesOptimization[_id].chain, instancesOptimization[_id].setup, instancesOptimization[_id].dateCreated, instancesOptimization[_id].solution, instancesOptimization[_id].solved, instancesOptimization[_id].dateSolution);
     }
 
     /// @notice Get hash information about a instance
@@ -116,8 +123,12 @@ contract Generator is VRFConsumerBase {
     function getAllInstances(uint256 _orcid) public view returns (Instance[] memory) {
         uint256 secret = links[_orcid].secret;
         Instance[] memory result = new Instance[](researchers[secret].idInstance.length);
-        for(uint256 i = 0; i < researchers[secret].idInstance.length; i++)
-            result[i] = instances[researchers[secret].idInstance[i]];
+        for(uint256 i = 0; i < researchers[secret].idInstance.length; i++){
+            if(researchers[secret].idInstance[i] % 2 == 0)
+                result[i] = instancesAuction[researchers[secret].idInstance[i]]; 
+            else
+                result[i] = instancesOptimization[researchers[secret].idInstance[i]];  
+        }
         return result;
     }
     
@@ -133,9 +144,15 @@ contract Generator is VRFConsumerBase {
             i++;
         }
         if(validResearcher == true){
-            instances[_id].solution = _solution;
-            instances[_id].solved = true;
-            instances[_id].dateSolution = block.timestamp;
+            if(_id % 2 == 0){
+                instancesAuction[_id].solution = _solution;
+                instancesAuction[_id].solved = true;
+                instancesAuction[_id].dateSolution = block.timestamp;  
+            }else{
+                instancesOptimization[_id].solution = _solution;
+                instancesOptimization[_id].solved = true;
+                instancesOptimization[_id].dateSolution = block.timestamp;  
+            }
             hashes[_id].solution_hash = _solution;
             hashes[_id].algorithm_hash = _algorithm_hash;
             hashes[_id].hash_method = _hash_method;      
@@ -143,71 +160,127 @@ contract Generator is VRFConsumerBase {
         return validResearcher;
     }
 
-    // ------------------------------- MAX-3SAT functions --------------------------------
-    
+    // ------------------------------- Egalitarian functions --------------------------------
+
     /// @notice Generates a new Instance from A generator
-    /// @param _p, _q, _secret, _numInstances parameters used to generate the instance, password from the user and number of instances
-    function createAInstance(uint256 _p, uint256 _q, uint256 _secret, uint256 _numInstances) public {
-        uint256[] memory randoms = expand();
-        uint256 cont = 0;
-        uint256 maxClauses = 100;
+    /// @param _agents, _resources, _secret, _numInstances and _mode 
+    function createAInstance(uint256 _agents, uint256 _resources, uint256 _secret, uint256 _numInstances, uint256 _mode) public {
+        uint256[] memory setup = new uint256[](3); // It contains three numbers: the first indicates the agents, the second one the number of resources and the third one the mode
+        if(_agents == 0){
+            _agents = random(10);
+        }
+        if(_agents == 0){
+            _agents = 1;
+        }
+        if(_resources == 0){
+            _resources = random(40);
+        }
+        if(_resources == 0){
+            _resources = 1;
+        }
+        setup[0] = _agents;
+        setup[1] = _resources;
+        setup[2] = _mode;
+        uint256 symbols = 1000;
+        uint256 totalPreferences = _agents * _resources;
         for(uint k = 0; k < _numInstances; k++){
-            string memory prepositions = "";
-            uint256 symbols = 1;
-            uint256 numClauses = 0;
-            // First round of symbols
-            for(uint256 i = 0; i < clausesLength-1; i++){
-                if(randoms[cont] < _p)
-                    symbols++; 
-                cont++;
-            }      
-            // We create the first clause
-            for(uint256 i = 0; i < clausesLength; i++)
-                prepositions = append(prepositions, intToString(random(symbols)));
-            numClauses++;
-            // We create the rest of clauses
-            while((randoms[cont] < _q) && (numClauses < maxClauses)){
-                cont++;
-                for(uint256 i = 0; i < clausesLength; i++){
-                    if(randoms[cont]  < _p)
-                        symbols++; 
-                    cont++;
-                }  
-                for(uint256 i = 0; i < clausesLength; i++)
-                    prepositions = append(prepositions, intToString(random(symbols)));
-                numClauses++;
+            string memory chain = "";
+            for(uint256 i = 0; i < totalPreferences; i++){
+                chain = append(chain, intToString(random(symbols)));
+                chain = append(chain, " ");
             }
-            instances[idInstance] = Instance(idInstance, prepositions, numClauses, block.timestamp, "Unresolved", false, 0);
+            instancesAuction[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
+            researchers[_secret].idInstance.push(idInstance);
+            idInstance++;
+            instancesOptimization[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
             researchers[_secret].idInstance.push(idInstance);
             idInstance++;
         }
     }
 
     /// @notice Generates a new Instance from B generator
-    /// @param _p, _q, _secret, _numInstances parameters used to generate the instance, password from the user and number of instances
-    function createBInstance(uint256 _p, uint256 _q, uint256 _secret, uint256 _numInstances) public {
-        uint256[] memory randoms = expand();
-        uint256 cont = 0;
-        uint256 maxClauses = 100;
+    /// @param _agents, _resources, _secret, _numInstances and _mode 
+    function createBInstance(uint256 _agents, uint256 _resources, uint256 _secret, uint256 _numInstances, uint256 _mode) public {
+        uint256[] memory setup = new uint256[](3); // It contains three numbers: the first indicates the agents, the second one the number of resources and the third one the mode
+        if(_agents == 0){
+            _agents = random(10);
+        }
+        if(_agents == 0){
+            _agents = 1;
+        }
+        if(_resources == 0){
+            _resources = random(40);
+        }
+        if(_resources == 0){
+            _resources = 1;
+        }
+        setup[0] = _agents;
+        setup[1] = _resources;
+        setup[2] = _mode;
+        uint256 totalPreferences = _agents * _resources;
         for(uint k = 0; k < _numInstances; k++){
-            string memory prepositions = "";
-            uint256 symbols = 1;
-            uint256 numClauses = 0;
-            // Decide the number of clauses
-            while((randoms[cont] < _q) && (numClauses < maxClauses)){
-                numClauses++;
+            string memory chain = "";
+            uint256 cont = 0;
+            uint256 symbols = 1000;
+            uint256 interval = symbols / _resources;
+            for(uint256 i = 0; i < totalPreferences; i++){
+                if(cont == _resources){
+                    symbols = 1000;
+                    cont = 0;
+                }
+                chain = append(chain, intToString(random(symbols)));
+                chain = append(chain, " ");
+                symbols = symbols - interval;
                 cont++;
             }
-            // Add symbols
-            for(uint256 i = 0; i < (3*numClauses)-1; i++){
-                if(randoms[cont] < _p)
-                    symbols++; 
+            instancesAuction[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
+            researchers[_secret].idInstance.push(idInstance);
+            idInstance++;
+            instancesOptimization[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
+            researchers[_secret].idInstance.push(idInstance);
+            idInstance++;
+        }
+    }
+
+    /// @notice Generates a new Instance from C generator
+    /// @param _agents, _resources, _secret, _numInstances and _mode 
+    function createCInstance(uint256 _agents, uint256 _resources, uint256 _secret, uint256 _numInstances, uint256 _mode) public {
+        uint256[] memory setup = new uint256[](3); // It contains three numbers: the first indicates the agents, the second one the number of resources and the third one the mode
+        if(_agents == 0){
+            _agents = random(10);
+        }
+        if(_agents == 0){
+            _agents = 1;
+        }
+        if(_resources == 0){
+            _resources = random(40);
+        }
+        if(_resources == 0){
+            _resources = 1;
+        }
+        setup[0] = _agents;
+        setup[1] = _resources;
+        setup[2] = _mode;   
+        uint256 totalPreferences = _agents * _resources;
+        for(uint k = 0; k < _numInstances; k++){
+            string memory chain = "";
+            uint256 symbols = 0;
+            uint256 interval = 1000 / _resources;
+            uint256 cont = 0;
+            for(uint256 i = 0; i < totalPreferences; i++){
+                symbols = symbols + interval;
+                chain = append(chain, intToString(random(symbols)));
+                chain = append(chain, " ");
                 cont++;
+                if(cont == _resources){
+                    symbols = 0;
+                    cont = 0;
+                }
             }
-            // Fill the blanks   
-            for(uint256 i = 0; i < 3*numClauses; i++)
-                prepositions = append(prepositions, intToString(random(symbols)));
-            instances[idInstance] = Instance(idInstance, prepositions, numClauses, block.timestamp, "Unresolved", false, 0);
+            instancesAuction[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
+            researchers[_secret].idInstance.push(idInstance);
+            idInstance++;
+            instancesOptimization[idInstance] = Instance(idInstance, chain, setup, block.timestamp, "Unresolved", false, 0);
             researchers[_secret].idInstance.push(idInstance);
             idInstance++;
         }

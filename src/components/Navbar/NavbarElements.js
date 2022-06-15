@@ -32,7 +32,7 @@ export const NavLogo = styled(LinkR)`
     text-decoration: none;
 
     &:hover {
-        color: #01bf71;
+        color: #1E90FF;
     }
 `;
 
@@ -81,13 +81,13 @@ export const NavLinks = styled(LinkS)`
 
     &:hover {
         transition: all 0.4s ease-in-out;
-        color: #01bf71;
-        border-bottom: 2px solid #01bf71;
+        color: #1E90FF;
+        border-bottom: 2px solid #1E90FF;
     }
 
     &.active {
         transition: all 0.4s ease-in-out;
-        border-bottom: 2px solid #01bf71;
+        border-bottom: 2px solid #1E90FF;
     }
 `;
 
@@ -105,7 +105,7 @@ export const NavBtnLink = styled(LinkR)`
     background: transparent;
     white-space: nowrap;
     padding: 10px 22px;
-    color: #01bf71;
+    color: #1E90FF;
     font-size: 16px;
     outline: none;
     border: none;

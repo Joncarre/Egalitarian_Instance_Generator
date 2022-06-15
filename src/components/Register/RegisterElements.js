@@ -14,8 +14,8 @@ export const Container = styled.div`
     overflow: hidden;
     background: linear-gradient(
         108deg,
-        rgba(11, 83, 69 ) 0%,
-        rgba(23, 165, 137) 100%
+        #23395d 0%,
+        #192841 100%
     );
 `;
 
@@ -39,11 +39,11 @@ export const Icon = styled(Link)`
 
 export const FormButton = styled.input`
     font-family: monospace, monospace;
-    background: #117864;
+    background: #0F52BA;
     padding: 12px 0px;
     margin-top: 15px;
     border-radius: 5px;
-    border: 3px solid #117864;
+    border: 3px solid #0F52BA;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
@@ -53,8 +53,8 @@ export const FormButton = styled.input`
 
     &:hover{
         transition: all 0.3s ease-in-out;
-        border: 3px solid #117864;
-        color: #117864;
+        border: 3px solid 	#0F52BA;
+        color: 	#0F52BA;
         background: #fff;
     }
 `;
