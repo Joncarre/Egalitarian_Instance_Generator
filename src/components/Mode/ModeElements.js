@@ -1,16 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     min-height: calc(100vh - 80px);
     display: block;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    z-index: 0;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
     background: linear-gradient(
         108deg,
@@ -19,25 +11,34 @@ export const Container = styled.div`
     );
 `;
 
-export const Icon = styled(Link)`
-    margin-left: 32px; 
-    margin-top: 32px;
-    text-decoration: none;
+export const TextDiv = styled.div`
+    padding-top: 50px;
+    text-align: center;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
     color: #fff;
-    font-weight: 700;
-    font-size: 32px;
+`
+
+export const ButtonFlex = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const ButtonItem = styled.div`
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 50%;
+    text-align: ${({ right }) => right ? "right" : "left"};
 
     @media screen and (max-width: 480px) {
-        margin-left: 16px;
-        margin-top: 8px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
+`
 
-    &:hover {
-        color: #fff;
-    }
-`;
-
-export const FormButton = styled.input`
+export const StyledButton = styled.button`
     font-family: monospace, monospace;
     background: #0F52BA;
     padding: 12px 0px;
@@ -47,9 +48,7 @@ export const FormButton = styled.input`
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    width: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
+    width: 150px;
 
     &:hover{
         transition: all 0.3s ease-in-out;
@@ -58,6 +57,3 @@ export const FormButton = styled.input`
         background: #fff;
     }
 `;
-
-
-

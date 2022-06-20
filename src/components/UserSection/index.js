@@ -11,6 +11,7 @@ import { secureStorage } from 'components/secureSession';
 import {
   Container,
   FormButton,
+  ButtonFlex,
   FormButtonTop,
   Form,
   FormH1,
@@ -84,7 +85,7 @@ const UserSection = () => {
         data.resources,
         secureStorage.getItem('password'),
         data.numInstances,
-        1,
+        secureStorage.getItem('limited'),
         { gasLimit: 30000000 })
       await transaction.wait()
     }
@@ -104,7 +105,7 @@ const UserSection = () => {
         data.resources,
         secureStorage.getItem('password'),
         data.numInstances,
-        1,
+        secureStorage.getItem('limited'),
         { gasLimit: 30000000 })
       await transaction.wait()
     }
@@ -124,7 +125,7 @@ const UserSection = () => {
         data.resources,
         secureStorage.getItem('password'),
         data.numInstances,
-        1,
+        secureStorage.getItem('limited'),
         { gasLimit: 30000000 })
       await transaction.wait()
     }
@@ -219,7 +220,7 @@ const UserSection = () => {
       }
     }
   }
-  
+
   /*
   * Get the array which contains all the dates for the random numbers generated from the SC
   */
@@ -286,12 +287,11 @@ const UserSection = () => {
           {errors?.numInstances?.type === "max" && <FormError>Integer number between [1, 5]</FormError>}
           {errors?.numInstances?.type === "min" && <FormError>Integer number between [1, 5]</FormError>}
           {errors?.numInstances?.type === "pattern" && <FormError>Numerical characters only</FormError>}
-          <div>
-            { /* FormButtonTop has props(left or right) for controlling the 'float' attr  */}
-            <FormButtonTop left id="submit1" type="submit" value="A generator" />
-            <FormButtonTop center id="submit2" type="submit" value="B generator" />
-            <FormButtonTop right id="submit3" type="submit" value="C generator" />
-          </div>
+          <ButtonFlex>
+            <FormButtonTop id="submit1" type="submit" value="A generator" />
+            <FormButtonTop id="submit2" type="submit" value="B generator" />
+            <FormButtonTop id="submit3" type="submit" value="C generator" />
+          </ButtonFlex>
         </Form>
       </FormWrap1>
       <FormWrap2>

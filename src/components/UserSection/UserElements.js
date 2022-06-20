@@ -52,6 +52,11 @@ export const FormButton = styled.input`
     }
 `;
 
+export const ButtonFlex = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
 export const FormButtonTop = styled.input`
     font-family: monospace, monospace;
     background: #0F52BA;
@@ -62,8 +67,12 @@ export const FormButtonTop = styled.input`
     color: #fff;
     cursor: pointer;
     font-size: 16px;
-    width: 32%;
-    float: ${props => props.right ? `right` : `left`};
+    width: 130px;
+
+    &:nth-child(2) {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
     &:hover{
         transition: all 0.3s ease-in-out;
@@ -72,8 +81,7 @@ export const FormButtonTop = styled.input`
         background: #fff;
     }
     @media screen and (max-width: 600px) {
-        width: 47%;
-        padding: 10px 3px;
+        width: 60px;
         font-size: 0.7em;
     }
 `;

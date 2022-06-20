@@ -31,9 +31,9 @@ const Root = styled("div")(
   table {
     font-size: 0.8rem;
     border-collapse: collapse;
-    width: 500px;
-    @media (max-width: 600px) {
-      width: 100%;
+    width: 700px;
+    @media (max-width: 700px) {
+      width: 500px;
     }
   }
 
@@ -158,7 +158,7 @@ export default function UnstyledTable({ data, headerItems, footer }) {
             : rows
           ).map(row => {
             return (
-            <TrHover rowSolved={row.solved} key={row.id} className="currentRow" onClick={() => handleClickRow(row)}>
+              <TrHover rowSolved={row.solved} key={row.id} className="currentRow" onClick={() => handleClickRow(row)}>
                 {headerItems.map(item => {
                   if (item.name === "solved") {
                     return row[item.name] ? <td key={item.name}>True</td> : <td key={item.name}>False</td>;

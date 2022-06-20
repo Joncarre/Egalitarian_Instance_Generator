@@ -12,5 +12,5 @@ export const Container = styled.div`
 `
 
 export const Wrap = styled.div`
-    margin: 50px auto; 
+    margin: 50px auto;
 `

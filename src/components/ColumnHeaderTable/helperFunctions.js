@@ -1,5 +1,6 @@
 // Creates the structure for a JSON file
 export const buildJSON = _oldChain => {
+    console.log("The chain: " + _oldChain)
     let object = {};
     let chain = String(_oldChain).replace(/\D/g, '');
     let tempArray = Array.from(chain);

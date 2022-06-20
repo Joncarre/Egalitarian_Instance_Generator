@@ -49,7 +49,7 @@ const SignIn = () => {
 				const result = await contract.connect(signer).checkPass(data.secret);
 				if (result) {
 					secureStorage.setItem('password', data.secret);
-					history.push("/user");
+					history.push("/mode");
 				} else {
 					setHasPassError(true);
 				}

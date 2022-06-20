@@ -8,7 +8,10 @@ const Instances = props => {
 
     const headerItems = [
         { name: "id", label: "ID" },
-        { name: "size", label: "Size" },
+        { name: "mode", label: "Mode" },
+        { name: "type", label: "Type" },
+        { name: "agents", label: "Agents" },
+        { name: "resources", label: "Resources" },
         { name: "created", label: "Date Created" },
         { name: "solved", label: "Solved" },
     ]

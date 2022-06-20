@@ -41,15 +41,24 @@ const Instance = () => {
 
 	const headerItems = [
 		{ name: "id", label: "ID" },
-		{ name: "chain", label: "Chain" },
-		{ name: "size", label: "Size" },
+		{ name: "chain", label: "Instance" },
+		{ name: "mode", label: "Mode" },
+		{ name: "type", label: "Type" },
+		{ name: "agents", label: "Agents" },
+		{ name: "resources", label: "Resources" },
 		{ name: "created", label: "Date Created" },
-		{ name: "solution", label: "Solution hash" },
+		{ name: "solution", label: "Solution Hash" },
 		{ name: "solved", label: "Solved" },
 		{ name: "ended", label: "Date Solution" },
 	]
 
-	async function async_solveInstance({ solution_hash, algorithm_hash, hash_method }) {
+	const generateSolutionHash = (solution) => {
+		var sha256 = require('js-sha256');
+		var hashed = sha256(solution);
+		return hashed;
+	}
+
+	async function async_solveInstance({ solution, algorithm_hash, hash_method }) {
 		if (typeof window.ethereum !== 'undefined') {
 			await requestAccount()
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -58,12 +67,12 @@ const Instance = () => {
 			const transaction = await contract.solveInstance(
 				secureStorage.getItem('password'),
 				rowData.id,
-				solution_hash,
+				solution,
 				algorithm_hash,
 				hash_method,
 				{ gasLimit: 10000000 })
 			await transaction.wait();
-			reset({ solution_hash: "", algorithm_hash: "", hash_method: "" });
+			reset({ solution: "", algorithm_hash: "", hash_method: "" });
 
 			history.push({
 				pathname: '/user'
@@ -73,6 +82,7 @@ const Instance = () => {
 
 	const handleResolve = (data) => {
 		console.log(data);
+		data.solution = generateSolutionHash(data.solution);
 		async_solveInstance(data);
 	}
 
@@ -93,8 +103,8 @@ const Instance = () => {
 					<Form key={1} onSubmit={handleSubmit(handleResolve)}>
 						<FormH1>Resolve the instance</FormH1>
 						<span className="field-tip">
-							<span className="tip-content">Hash of the file containing the solution</span>
-							<FormInput {...register("solution_hash")} type="text" name="solution_hash" placeholder="Solution hash" />
+							<span className="tip-content">Solution of the instance</span>
+							<FormInput {...register("solution")} type="text" name="solution" placeholder="Solution" />
 						</span>
 						<span className="field-tip">
 							<span className="tip-content">Hash of the algorithm file used to find the solution</span>
