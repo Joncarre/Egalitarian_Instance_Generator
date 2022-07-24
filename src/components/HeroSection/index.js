@@ -27,7 +27,7 @@ const HeroSection = () => {
             </HeroBg>
             <HeroContent>
                 <HeroH1>
-                    Egalitarian Instance Generator
+                    Instance generator for resource allocations
                 </HeroH1>
                 <HeroP>
                     Sign up and generate problem instances for algorithm testing

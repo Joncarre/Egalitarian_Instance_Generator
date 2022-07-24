@@ -80,14 +80,18 @@ const UserSection = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner()
       const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
-      const transaction = await contract.createAInstance(
-        data.agents,
-        data.resources,
-        secureStorage.getItem('password'),
-        data.numInstances,
-        secureStorage.getItem('limited'),
-        { gasLimit: 30000000 })
-      await transaction.wait()
+      try {
+        const transaction = await contract.createAInstance(
+          data.agents,
+          data.resources,
+          secureStorage.getItem('password'),
+          data.numInstances,
+          secureStorage.getItem('limited'),
+          { gasLimit: 30000000 })
+        await transaction.wait()
+      } catch (e) {
+        alert("Gas Limit Error: please, consider decreasing the value of some of the parameters used to generate the instances. We use a gas limit of 30 million units. Refer to your MetaMask wallet, select the 'Activity' tab, click on the failed transaction and look at the 'Gas Used' field. This will help you verify the gas you are using in each transaction.");
+      }
     }
   }
 
@@ -100,14 +104,18 @@ const UserSection = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner()
       const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
-      const transaction = await contract.createBInstance(
-        data.agents,
-        data.resources,
-        secureStorage.getItem('password'),
-        data.numInstances,
-        secureStorage.getItem('limited'),
-        { gasLimit: 30000000 })
-      await transaction.wait()
+      try {
+        const transaction = await contract.createBInstance(
+          data.agents,
+          data.resources,
+          secureStorage.getItem('password'),
+          data.numInstances,
+          secureStorage.getItem('limited'),
+          { gasLimit: 30000000 })
+        await transaction.wait()
+      } catch (e) {
+        alert("Gas Limit Error: please, consider decreasing the value of some of the parameters used to generate the instances. We use a gas limit of 30 million units. Refer to your MetaMask wallet, select the 'Activity' tab, click on the failed transaction and look at the 'Gas Used' field. This will help you verify the gas you are using in each transaction.");
+      }
     }
   }
 
@@ -120,14 +128,18 @@ const UserSection = () => {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner()
       const contract = new ethers.Contract(generatorAddress, Generator.abi, signer);
-      const transaction = await contract.createCInstance(
-        data.agents,
-        data.resources,
-        secureStorage.getItem('password'),
-        data.numInstances,
-        secureStorage.getItem('limited'),
-        { gasLimit: 30000000 })
-      await transaction.wait()
+      try {
+        const transaction = await contract.createCInstance(
+          data.agents,
+          data.resources,
+          secureStorage.getItem('password'),
+          data.numInstances,
+          secureStorage.getItem('limited'),
+          { gasLimit: 30000000 })
+        await transaction.wait()
+      } catch (e) {
+        alert("Gas Limit Error: please, consider decreasing the value of some of the parameters used to generate the instances. We use a gas limit of 30 million units. Refer to your MetaMask wallet, select the 'Activity' tab, click on the failed transaction and look at the 'Gas Used' field. This will help you verify the gas you are using in each transaction.");
+      }
     }
   }
 
@@ -265,13 +277,13 @@ const UserSection = () => {
           </span>
           <FormInput {...register("resources", {
             required: true,
-            max: 30,
+            max: 40,
             min: 0,
             pattern: /^[0-9\b]+$/
           })} type="number" name="resources" placeholder="resources" />
           {errors?.resources?.type === "required" && <FormError>Field required</FormError>}
-          {errors?.resources?.type === "max" && <FormError>Integer number between [0, 30]</FormError>}
-          {errors?.resources?.type === "min" && <FormError>Integer number between [0, 30]</FormError>}
+          {errors?.resources?.type === "max" && <FormError>Integer number between [0, 40]</FormError>}
+          {errors?.resources?.type === "min" && <FormError>Integer number between [0, 40]</FormError>}
           {errors?.resources?.type === "pattern" && <FormError>Numerical characters only</FormError>}
           <span className="field-tip">
             <FormLabel>Number of instances</FormLabel>

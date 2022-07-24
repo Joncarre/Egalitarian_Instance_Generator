@@ -44,14 +44,14 @@ const Root = styled("div")(
 // props: data & headerItems
 export default function UnstyledTable({ data, headerItems }) {
 
-  const handleClickJson = (chain, id) => {
-    const temp = buildJSON(chain);
+  const handleClickJson = (chain, id, agents, resources) => {
+    const temp = buildJSON(chain, agents, resources);
     downloadJSON(temp, id);
   }
 
   const handleResolve = (data, item) => {
     if (item.name === 'chain') {
-      return <td><ButtonJson onClick={() => handleClickJson(data['chain'], data['id'], data['id'])}>JSON</ButtonJson></td>;
+      return <td><ButtonJson onClick={() => handleClickJson(data['chain'], data['id'], data['agents'], data['resources'])}>JSON</ButtonJson></td>;
     }
     else if (item.name === 'solved') {
       return data[item.name] ? <td>True</td> : <td>False</td>;

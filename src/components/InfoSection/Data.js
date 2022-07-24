@@ -1,6 +1,6 @@
 import dappImg from 'images/dapp.png';
 import howItWorksImg from 'images/how_it_works.png';
-import threeSatImg from 'images/3sat.png';
+import threeSatImg from 'images/ega2.svg';
 import chainHomeImg from 'images/chain_home.png';
 
 export const homeObjOne = {

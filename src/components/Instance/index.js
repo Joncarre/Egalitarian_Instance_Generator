@@ -103,7 +103,7 @@ const Instance = () => {
 					<Form key={1} onSubmit={handleSubmit(handleResolve)}>
 						<FormH1>Resolve the instance</FormH1>
 						<span className="field-tip">
-							<span className="tip-content">Solution of the instance</span>
+							<span className="tip-content">The solution must be provided in array format, whether the problem is an auction problem (where each array position indicates which agent takes the resource) or an optimization problem (where each array position indicates the lying agent's preference for that resource). For example: [8, 21, 4, 10, 14]. This solution will be encrypted by the application and stored in the smart contract</span>
 							<FormInput {...register("solution")} type="text" name="solution" placeholder="Solution" />
 						</span>
 						<span className="field-tip">
@@ -112,7 +112,7 @@ const Instance = () => {
 							<FormInput {...register("algorithm_hash")} type="text" name="algorithm_hash" placeholder="Algorithm hash" />
 						</span>
 						<span className="field-tip">
-							<span className="tip-content">Method used to obtain the hash (MD5, SHA256, Keccak-512...)</span>
+							<span className="tip-content">We do not encrypt the file with the algorithm used. Therefore, in addition to providing the hash of the file, you must also provide the encryption method used (MD5, SHA256, Keccak-512...)</span>
 
 							<FormInput {...register("hash_method")} type="text" name="hash_method" placeholder="Hash method" />
 						</span>
