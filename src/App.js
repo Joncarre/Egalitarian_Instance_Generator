@@ -16,7 +16,7 @@ import ModePage from 'pages/mode';
 
 import Dapp from 'components/SubPages/Dapp';
 import HowItWorks from 'components/SubPages/HowItWorks';
-import ThreeSat from 'components/SubPages/ThreeSat';
+import ThreeSat from 'components/SubPages/Auction';
 import ChainLink from 'components/SubPages/ChainLink';
 
 import TermsOfService from 'components/SubPages/TermsOfService';
@@ -53,7 +53,7 @@ function App() {
         {/* Routes of Navbar */}
         <Route path='/dapp' component={() => <Subpage Comp={Dapp} />} exact />
         <Route path='/howitworks' component={() => <Subpage Comp={HowItWorks} />} exact />
-        <Route path='/3sat' component={() => <Subpage Comp={ThreeSat} />} exact />
+        <Route path='/auction' component={() => <Subpage Comp={ThreeSat} />} exact />
         <Route path='/chainlink' component={() => <Subpage Comp={ChainLink} />} exact />
         {/* Routes of Footer */}
         <Route path='/termsofservice' component={() => <Subpage Comp={TermsOfService} />} exact />
