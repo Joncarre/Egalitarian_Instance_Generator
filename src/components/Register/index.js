@@ -114,7 +114,7 @@ const Register = () => {
 					{errors?.orcid?.type === "minLength" && <FormError>It must be a number of 16 digits</FormError>}
 					{errors?.orcid?.type === "maxLength" && <FormError>It must be a number of 16 digits</FormError>}
 					{errors?.orcid?.type === "pattern" && <FormError>Numerical characters only</FormError>}
-					<FormButton type="submit" />
+					<FormButton type="submit" value="Submit"/>
 				</Form>
 			</FormContent>
 		</Container>
