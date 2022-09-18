@@ -83,7 +83,7 @@ const SignIn = () => {
 					{errors?.secret?.type === "pattern" && <FormError>Numerical characters only</FormError>}
 					{hasPassError && <FormError>Incorrect password</FormError>}
 					{noPassError && <FormError>Please enter valid password first</FormError>}
-					<FormButton type="submit" />
+					<FormButton type="submit" value="Submit"/>
 				</Form>
 			</FormContent>
 		</Container>
